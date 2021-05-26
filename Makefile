@@ -35,6 +35,12 @@ all: test manager
 .PHONY: check
 check: test lint ## Run tests and linters
 
+# Generate docs
+.PHONY: docs
+docs:
+	rm -rf docs/types
+	go run cmd/docs.go
+
 bin/golangci-lint: bin/golangci-lint-${GOLANGCI_VERSION}
 	@ln -sf golangci-lint-${GOLANGCI_VERSION} bin/golangci-lint
 bin/golangci-lint-${GOLANGCI_VERSION}:
